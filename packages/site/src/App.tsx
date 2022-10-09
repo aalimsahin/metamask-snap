@@ -1,8 +1,10 @@
-import styled, { ThemeProvider } from 'styled-components';
-import { useStyling, useTheme } from 'hooks';
-import { Footer, Header, Home } from 'components';
 import { MetaMaskProvider } from 'context';
-import { light, dark, GlobalStyle } from 'config/theme';
+import { useState } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { Footer, Header, Home } from './components';
+
+import { light, dark, GlobalStyle } from './config/theme';
+import { setLocalStorage, getThemePreference } from './utils';
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,13 +13,17 @@ const Wrapper = styled.div`
   min-height: 100vh;
   max-width: 100vw;
 `;
-
+/* eslint-disable */
 function App() {
-  const { theme, toggleTheme } = useTheme();
-  useStyling();
+  const [darkTheme, setDarkTheme] = useState(getThemePreference());
+
+  const toggleTheme = () => {
+    setLocalStorage('theme', darkTheme ? 'light' : 'dark');
+    setDarkTheme(!darkTheme);
+  };
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? dark : light}>
+    <ThemeProvider theme={darkTheme ? dark : light}>
       <MetaMaskProvider>
         <GlobalStyle />
         <Wrapper>

@@ -1,9 +1,6 @@
-import {
-  MetamaskActions,
-  useMetamaskContext,
-} from 'context/metamask/MetamaskContext';
 import { useCallback } from 'react';
 import { Snap } from 'types';
+import { MetamaskActions, useMetamaskContext } from './MetamaskContext';
 
 export const useSetInstalled = () => {
   const [, dispatch] = useMetamaskContext();

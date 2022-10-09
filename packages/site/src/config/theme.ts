@@ -43,6 +43,7 @@ export const light: DefaultTheme = {
       default: '#FFFFFF',
       alternative: '#F2F4F6',
       inverse: '#141618',
+      snapshot: '#fff',
     },
     icon: {
       default: '#141618',
@@ -56,6 +57,7 @@ export const light: DefaultTheme = {
     },
     border: {
       default: '#BBC0C5',
+      snapshot: '#e5e7eb',
     },
     primary: {
       default: '#6F4CFF',
@@ -79,9 +81,10 @@ export const light: DefaultTheme = {
 export const dark: DefaultTheme = {
   colors: {
     background: {
-      default: '#1a1c1f',
+      default: '#24272A',
       alternative: '#141618',
       inverse: '#FFFFFF',
+      snapshot: '#211F24',
     },
     icon: {
       default: '#FFFFFF',
@@ -95,6 +98,7 @@ export const dark: DefaultTheme = {
     },
     border: {
       default: '#848C96',
+      snapshot: 'rgb(86, 86, 86)',
     },
     primary: {
       default: '#6F4CFF',
@@ -138,7 +142,7 @@ export const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     font-size: ${(props) => props.theme.fontSizes.heading};
-  ${(props) => props.theme.mediaQueries.small} {
+    ${(props) => props.theme.mediaQueries.small} {
       font-size: ${(props) => props.theme.fontSizes.mobileHeading};
     }
   }

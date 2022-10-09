@@ -1,5 +1,9 @@
+import { useMetamaskContext } from 'context';
+import {
+  useSetError,
+  useSetInstalled,
+} from 'context/metamask/MetamaskContextHooks';
 import styled from 'styled-components';
-import { MetamaskActions, useMetamaskContext } from '../context';
 import {
   connectSnap,
   getSnap,
@@ -99,20 +103,19 @@ const ErrorMessage = styled.div`
 `;
 
 export const Home = () => {
-  const [state, dispatch] = useMetamaskContext();
+  const setInstalled = useSetInstalled();
+  const setError = useSetError();
+  const [state] = useMetamaskContext();
 
   const handleConnectClick = async () => {
     try {
       await connectSnap();
       const installedSnap = await getSnap();
 
-      dispatch({
-        type: MetamaskActions.SetInstalled,
-        payload: installedSnap,
-      });
+      setInstalled(installedSnap);
     } catch (e) {
       console.error(e);
-      dispatch({ type: MetamaskActions.SetError, payload: e });
+      setError(e);
     }
   };
 
@@ -121,7 +124,7 @@ export const Home = () => {
       await sendHello();
     } catch (e) {
       console.error(e);
-      dispatch({ type: MetamaskActions.SetError, payload: e });
+      setError(e);
     }
   };
 
