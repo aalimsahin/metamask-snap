@@ -65,9 +65,6 @@ const VoteButton = styled.button`
 const web3 = new Web3Provider(window.ethereum as any);
 const client = new snapshot.Client712(PRODUCTIONSNAPSHOT);
 
-console.log(web3);
-console.log(client);
-
 const ProposalModal = ({ modal }: { modal: ModalController }) => {
   const proposal = useTypedSelector((state) => state.proposals.proposal1);
   const address = useAddress();
@@ -77,7 +74,6 @@ const ProposalModal = ({ modal }: { modal: ModalController }) => {
   }
 
   const vote = async (choiceIndex: number) => {
-    console.log(choiceIndex);
     const payload = {
       address,
       spaceId: proposal.space.id,
@@ -104,15 +100,15 @@ const ProposalModal = ({ modal }: { modal: ModalController }) => {
             reason: payload.reason,
             app: payload.app,
           });
-          // eslint-disable-next-line
-          alert('Voted successfully');
+
           console.log(receipt);
         } catch (err) {
           console.log(err);
         }
       }
-
-      console.log();
+      // eslint-disable-next-line
+      alert('Voted successfully');
+      modal.close();
     } catch (err) {
       console.error(err);
     }

@@ -57,7 +57,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({
         method: 'snap_confirm',
         params: [
           {
-            prompt: getMessage(formatAddress(address)),
+            prompt: getMessage(address ? formatAddress(address) : ''),
             description: `Do you want to vote to ${spaceName} with ${choices[choice]}?`,
           },
         ],
