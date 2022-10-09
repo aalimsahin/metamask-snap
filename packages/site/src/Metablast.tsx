@@ -5,6 +5,7 @@ import { MetaMaskProvider } from './hooks';
 
 import { light, dark, GlobalStyle } from './config/theme';
 import { setLocalStorage, getThemePreference } from './utils';
+import { SnapshotPage } from './pages';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
   max-width: 100vw;
 `;
 /* eslint-disable */
-function App() {
+function Metablast() {
   const [darkTheme, setDarkTheme] = useState(getThemePreference());
 
   const toggleTheme = () => {
@@ -28,6 +29,7 @@ function App() {
         <GlobalStyle />
         <Wrapper>
           <Header handleToggleClick={toggleTheme} />
+          <SnapshotPage />
           <Home />
           <Footer />
         </Wrapper>
@@ -36,4 +38,4 @@ function App() {
   );
 }
 
-export default App;
+export default Metablast;

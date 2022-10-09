@@ -46,18 +46,9 @@ export const getSnap = async (version?: string): Promise<Snap | undefined> => {
   try {
     const snaps = await getSnaps();
 
-    const foundSnap = Object.values(snaps).find(
+    return Object.values(snaps).find(
       (snap) =>
         snap.id === defaultSnapOrigin && (!version || snap.version === version),
-    );
-
-    return (
-      foundSnap ?? {
-        id: defaultSnapOrigin,
-        permissionName: '',
-        initialPermissions: '' as any,
-        version: '0.0.1',
-      }
     );
   } catch (e) {
     console.log('Failed to obtain installed snap', e);
