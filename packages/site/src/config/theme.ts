@@ -7,8 +7,7 @@ const breakpoints = ['600px', '768px', '992px'];
  */
 const theme = {
   fonts: {
-    default:
-      '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+    default: '"Prompt", sans-serif',
     code: 'ui-monospace,Menlo,Monaco,"Cascadia Mono","Segoe UI Mono","Roboto Mono","Oxygen Mono","Ubuntu Monospace","Source Code Pro","Fira Mono","Droid Sans Mono","Courier New", monospace',
   },
   fontSizes: {
@@ -80,7 +79,7 @@ export const light: DefaultTheme = {
 export const dark: DefaultTheme = {
   colors: {
     background: {
-      default: '#24272A',
+      default: '#1a1c1f',
       alternative: '#141618',
       inverse: '#FFFFFF',
     },
@@ -139,7 +138,7 @@ export const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     font-size: ${(props) => props.theme.fontSizes.heading};
-    ${(props) => props.theme.mediaQueries.small} {
+  ${(props) => props.theme.mediaQueries.small} {
       font-size: ${(props) => props.theme.fontSizes.mobileHeading};
     }
   }

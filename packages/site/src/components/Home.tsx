@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
-import { MetamaskActions, MetaMaskContext } from '../hooks';
+import { MetamaskActions, useMetamaskContext } from '../context';
 import {
   connectSnap,
-  // getSnap,
+  getSnap,
   sendHello,
   shouldDisplayReconnectButton,
 } from '../utils';
@@ -100,14 +99,12 @@ const ErrorMessage = styled.div`
 `;
 
 export const Home = () => {
-  const [state, dispatch] = useContext(MetaMaskContext);
+  const [state, dispatch] = useMetamaskContext();
 
   const handleConnectClick = async () => {
     try {
       await connectSnap();
-      // const installedSnap = await getSnap();
-
-      const installedSnap = { id: 'local:localhost:3000' };
+      const installedSnap = await getSnap();
 
       dispatch({
         type: MetamaskActions.SetInstalled,
